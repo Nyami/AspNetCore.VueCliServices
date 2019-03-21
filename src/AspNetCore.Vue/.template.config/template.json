@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Douglas Cameron",
+  "classifications": [ "AspNetCore", "Vue" ],
+  "identity": "Nyami.AspNetCore.Vue.CSharp",
+  "name": "AspNetCore Vue Cli App",
+  "shortName": "aspnetvue"
+}

@@ -5,11 +5,11 @@
     <AssemblyName>Nyami.AspNetCore.VueCliServices</AssemblyName>
     <RootNamespace>Nyami.AspNetCore.VueCliServices</RootNamespace>
     <PackageId>Nyami.AspNetCore.VueCliServices</PackageId>
-    <Version>1.0.0</Version>
+    <Version>2.2.0</Version>
     <Authors>Douglas Cameron</Authors>
     <Company>Nyami</Company>
     <Description>
-      Provides an implementation of ISpaPrerendererBuilder that can build an Vue application by invoking the Vue CLI.
+      Provides an implementation of ISpaPrerendererBuilder that can build a Vue application by invoking the Vue CLI.
     </Description>
     <RepositoryUrl>https://github.com/Nyami/AspNetCore.VueCliServices.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Nyami/AspNetCore.VueCliServices.git</PackageProjectUrl>

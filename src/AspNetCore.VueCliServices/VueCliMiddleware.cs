@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.SpaServices;
 using Nyami.AspNetCore.VueCliServices.Util;
 using Nyami.AspNetCore.VueCliServices.Npm;
 
-
 namespace Nyami.AspNetCore.VueCliServices
 {
     internal static class VueCliMiddleware

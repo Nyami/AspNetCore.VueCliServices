@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Nyami.AspNetCore.VueCliServices;
 
-namespace AspNetCore.Vue
+namespace Nyami.AspNetCore.VueApp
 {
     public class Startup
     {

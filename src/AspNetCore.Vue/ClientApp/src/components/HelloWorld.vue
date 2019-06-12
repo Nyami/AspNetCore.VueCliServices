@@ -18,6 +18,8 @@
       <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
       <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
       <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+      <li><a href="https://dotnet.microsoft.com/apps/aspnet" target="_blank" rel="noopener">ASP.NET</a></li>
+      <li><a href="https://www.nyami.uk" target="_blank" rel="noopener">Nyami</a></li>
     </ul>
     <h3>Ecosystem</h3>
     <ul>
@@ -27,6 +29,12 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+
+    <h3>Values from ASP.NET</h3>
+      <ul>
+        <li v-if="!items.length">Sorry, there are no items, this is rather unexpected.</li>
+        <li v-for="(item, key) in items" :key="key">{{ item }}</li>
+      </ul>
   </div>
 </template>
 
@@ -36,6 +44,15 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+  private items: [] = [];
+
+  private created() {
+    fetch('/api/values')
+      .then((res) => res.json())
+      .then((data) => {
+        this.items = data;
+      });
+  }
 }
 </script>
 

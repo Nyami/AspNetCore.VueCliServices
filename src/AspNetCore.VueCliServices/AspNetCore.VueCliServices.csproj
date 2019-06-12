@@ -9,7 +9,7 @@
     <Authors>Douglas Cameron</Authors>
     <Company>Nyami</Company>
     <Description>
-      Provides an implementation of ISpaPrerendererBuilder that can build a Vue application by invoking the Vue CLI.
+      Extension methods for enabling Vue CLI middleware support.
     </Description>
     <RepositoryUrl>https://github.com/Nyami/AspNetCore.VueCliServices.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Nyami/AspNetCore.VueCliServices.git</PackageProjectUrl>

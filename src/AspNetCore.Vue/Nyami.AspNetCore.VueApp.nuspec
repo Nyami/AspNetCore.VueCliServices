@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Nyami.AspNetCore.Vue.Template</id>
-    <version>1.0.0</version>
+    <version>3.0.0</version>
     <authors>Douglas Cameron</authors>
     <projectUrl>https://github.com/Nyami/AspNetCore.VueCliServices.git</projectUrl>
     <licenseUrl>https://github.com/Nyami/AspNetCore.VueCliServices/blob/master/LICENSE</licenseUrl>

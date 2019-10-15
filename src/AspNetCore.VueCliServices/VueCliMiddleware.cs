@@ -10,6 +10,7 @@ using System.Net.Http;
 using Microsoft.AspNetCore.SpaServices;
 using Nyami.AspNetCore.VueCliServices.Util;
 using Nyami.AspNetCore.VueCliServices.Npm;
+using System.Collections.Generic;
 
 namespace Nyami.AspNetCore.VueCliServices
 {
@@ -56,11 +57,32 @@ namespace Nyami.AspNetCore.VueCliServices
         private static async Task<VueCliServerInfo> StartVueCliServerAsync(
             string sourcePath, string npmScriptName, ILogger logger)
         {
-            var portNumber = TcpPortFinder.FindAvailablePort();
+            var portNumber = 8080;//default port for vue cli: 8080
+            if (portNumber < 80)
+            {
+                portNumber = TcpPortFinder.FindAvailablePort();
+            }
+            else
+            {
+                // if the port we want to use is occupied, terminate the process utilizing that port.
+                // this occurs when "stop" is used from the debugger and the middleware does not have the opportunity to kill the process
+                PidUtils.KillPort((ushort)portNumber);
+            }
+
             logger.LogInformation($"Starting @Vue/cli on port {portNumber}...");
 
+            var envVars = new Dictionary<string, string>
+            {
+                { "PORT", portNumber.ToString() },
+                { "DEV_SERVER_PORT", portNumber.ToString() }, // vue cli 3 uses --port {number}, included below
+                { "BROWSER", "none" }, // We don't want vue-cli to open its own extra browser window pointing to the internal dev server port
+            };
+
             var npmScriptRunner = new NpmScriptRunner(
-                sourcePath, npmScriptName, $"--port {portNumber}", null);
+                sourcePath, npmScriptName, $"--port {portNumber}", envVars);
+            AppDomain.CurrentDomain.DomainUnload += (s, e) => npmScriptRunner?.Kill();
+            AppDomain.CurrentDomain.ProcessExit += (s, e) => npmScriptRunner?.Kill();
+            AppDomain.CurrentDomain.UnhandledException += (s, e) => npmScriptRunner?.Kill();
             npmScriptRunner.AttachToLogger(logger);
 
             Match openBrowserLine;

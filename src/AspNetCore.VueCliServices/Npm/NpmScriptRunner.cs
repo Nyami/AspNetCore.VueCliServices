@@ -23,7 +23,15 @@ namespace Nyami.AspNetCore.VueCliServices.Npm
         public EventedStreamReader StdOut { get; }
         public EventedStreamReader StdErr { get; }
 
+        public Process RunnerProcess { get; }
+
         private static Regex AnsiColorRegex = new Regex("\x001b\\[[0-9;]*m", RegexOptions.None, TimeSpan.FromSeconds(1));
+
+        public void Kill()
+        {
+            try { RunnerProcess?.Kill(); } catch { }
+            try { RunnerProcess?.WaitForExit(); } catch { }
+        }
 
         public NpmScriptRunner(string workingDirectory, string scriptName, string arguments, IDictionary<string, string> envVars)
         {

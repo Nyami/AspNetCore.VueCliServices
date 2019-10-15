@@ -1,5 +1,6 @@
 module.exports = {
-    devServer: {
-        public: 'https://localhost:44325'
-    }
+    //commenting to fix hot reload under asp core 3
+    //devServer: {
+    //    public: 'https://localhost:44325'
+    //}
 };

@@ -16,7 +16,7 @@ namespace Nyami.AspNetCore.VueCliServices
     internal static class VueCliMiddleware
     {
         private const string LogCategoryName = "Nyami.AspNetCore.SpaServices";
-        private static TimeSpan RegexMatchTimeout = TimeSpan.FromSeconds(5); // This is a development-time only feature, so a very long timeout is fine
+        private static TimeSpan RegexMatchTimeout = TimeSpan.FromSeconds(60); // This is a development-time only feature, so a very long timeout is fine
 
         public static void Attach(
             ISpaBuilder spaBuilder,
@@ -69,7 +69,7 @@ namespace Nyami.AspNetCore.VueCliServices
                 try
                 {
                     openBrowserLine = await npmScriptRunner.StdOut.WaitForMatch(
-                         new Regex("  - Local:   (http\\S+)", RegexOptions.None, RegexMatchTimeout));
+                         new Regex("(.*)Local:(.*)", RegexOptions.None, RegexMatchTimeout));
                 }
                 catch (EndOfStreamException ex)
                 {
@@ -80,7 +80,7 @@ namespace Nyami.AspNetCore.VueCliServices
                 }
             }
 
-            var uri = new Uri(openBrowserLine.Groups[1].Value);
+            var uri = new Uri(openBrowserLine.Groups[2].Value);
             var serverInfo = new VueCliServerInfo { Port = uri.Port, Host = uri.Host, Scheme = uri.Scheme };
 
             // Even after the Vue CLI claims to be listening for requests, there may be a short

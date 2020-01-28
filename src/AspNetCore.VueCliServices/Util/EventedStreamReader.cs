@@ -4,6 +4,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -90,18 +91,9 @@ namespace Nyami.AspNetCore.VueCliServices.Util
 
                 OnChunk(new ArraySegment<char>(buf, 0, chunkLength));
 
-                var lineBreakPos = Array.IndexOf(buf, '\n', 0, chunkLength);
-                if (lineBreakPos < 0)
-                {
-                    _linesBuffer.Append(buf, 0, chunkLength);
-                }
-                else
-                {
-                    _linesBuffer.Append(buf, 0, lineBreakPos + 1);
-                    OnCompleteLine(_linesBuffer.ToString());
-                    _linesBuffer.Clear();
-                    _linesBuffer.Append(buf, lineBreakPos + 1, chunkLength - (lineBreakPos + 1));
-                }
+                _linesBuffer.Append(buf, 0, chunkLength);
+                OnCompleteLine(_linesBuffer.ToString());
+                _linesBuffer.Clear();
             }
         }
 

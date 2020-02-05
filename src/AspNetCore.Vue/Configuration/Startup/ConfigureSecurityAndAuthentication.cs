@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Nyami.AspNetCore.VueApp.Configuration.Startup
 {
@@ -13,7 +14,7 @@ namespace Nyami.AspNetCore.VueApp.Configuration.Startup
         }
 
         public static IApplicationBuilder ConfigureSecurityHeaders(this IApplicationBuilder app,
-            IHostingEnvironment env)
+            IWebHostEnvironment env)
         {
             // TODO: Update and configure as required
 

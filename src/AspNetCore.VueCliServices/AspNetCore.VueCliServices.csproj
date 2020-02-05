@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Nyami.AspNetCore.VueCliServices</AssemblyName>
     <RootNamespace>Nyami.AspNetCore.VueCliServices</RootNamespace>
     <PackageId>Nyami.AspNetCore.VueCliServices</PackageId>
-    <Version>3.0.0</Version>
+    <Version>3.1.1</Version>
     <Authors>Douglas Cameron</Authors>
     <Company>Nyami</Company>
     <Description>
@@ -17,6 +17,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
   </ItemGroup>
 </Project>

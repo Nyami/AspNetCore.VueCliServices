@@ -1,7 +1,6 @@
 ﻿using Nyami.AspNetCore.VueCliServices.Util;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.SpaServices;
-using Microsoft.AspNetCore.SpaServices.Prerendering;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -11,10 +10,9 @@ using Nyami.AspNetCore.VueCliServices.Npm;
 namespace Nyami.AspNetCore.VueCliServices
 {
     /// <summary>
-    /// Provides an implementation of <see cref="ISpaPrerendererBuilder"/> that can build
-    /// a Vue application by invoking the Vue CLI.
+    /// Provides the ability to build and serve a Vue application by invoking the Vue CLI.
     /// </summary>
-    public class VueCliBuilder : ISpaPrerendererBuilder
+    public class VueCliBuilder
     {
         private static TimeSpan RegexMatchTimeout = TimeSpan.FromSeconds(5); // This is a development-time only feature, so a very long timeout is fine
 

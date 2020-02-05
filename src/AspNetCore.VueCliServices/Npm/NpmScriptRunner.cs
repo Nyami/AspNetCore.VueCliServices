@@ -67,6 +67,7 @@ namespace Nyami.AspNetCore.VueCliServices.Npm
             }
 
             var process = LaunchNodeProcess(processStartInfo);
+            ProcessTracker.Add(process);
             StdOut = new EventedStreamReader(process.StandardOutput);
             StdErr = new EventedStreamReader(process.StandardError);
         }
